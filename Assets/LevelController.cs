@@ -9,16 +9,18 @@ public class LevelController : MonoBehaviour {
 	public List<int> toppingCounts;
 	public List<string> toppingNames;
 	public List<int> toppingsNeeded;
-
+    public SpriteRenderer[] sprites;
 	public Text nameText;
 	public Text amountText;
-
+    public GameObject player; 
 
 	void Start () {
 		for (int i = 0; i < toppingNames.Count; i++) {
 			toppingCounts.Add (0);
 			toppingsNeeded.Add (Random.Range (0, 4));
 		}
+        
+        
 	}
 	
 	// Update is called once per frame
@@ -36,8 +38,10 @@ public class LevelController : MonoBehaviour {
 		for (int i = 0; i < toppingNames.Count; i++) {
 			if (ingredient == toppingNames [i]) {
 				toppingCounts [i] += 1;
-			}
+                sprites[i].enabled = true;
+            }
 		}
+
 
 	}
 }
