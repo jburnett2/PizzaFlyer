@@ -7,7 +7,7 @@ public class TestShip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		rb.AddForce (new Vector3 (0, 0, 100));
+		rb.AddForce (new Vector3 (0, 0, 1000));
 	}
 	
 	// Update is called once per frame
