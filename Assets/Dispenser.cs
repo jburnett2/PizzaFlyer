@@ -9,7 +9,8 @@ public class Dispenser : MonoBehaviour {
 	LevelController lc;
 	// Use this for initialization
 	void Start () {
-		ps.Stop ();
+		Cursor.visible = false;
+		ps.Play ();
 		lc = GameObject.Find ("LevelController").GetComponent<LevelController> ();
 	}
 	
@@ -24,9 +25,9 @@ public class Dispenser : MonoBehaviour {
 	}
 
 	IEnumerator DeployToppings(){
-		ps.Play ();
+		//ps.Play ();
 		lc.AddTopping (topping);
 		yield return new WaitForSeconds (toppingDeployTime);
-		ps.Stop();
+		//ps.Stop();
 	}
 }

@@ -12,13 +12,15 @@ public class LevelController : MonoBehaviour {
     public SpriteRenderer[] sprites;
 	public Text nameText;
 	public Text amountText;
-    public GameObject player; 
+	public Text titleText;
 
 	void Start () {
 		for (int i = 0; i < toppingNames.Count; i++) {
 			toppingCounts.Add (0);
 			toppingsNeeded.Add (Random.Range (0, 4));
 		}
+
+		Cursor.visible = false;
         
         
 	}
@@ -30,6 +32,16 @@ public class LevelController : MonoBehaviour {
 		for (int i = 0; i < toppingNames.Count; i++) {
 			nameText.text += toppingNames [i].ToUpper() + ":\n";
 			amountText.text += toppingCounts [i].ToString () + "/" + toppingsNeeded [i].ToString () + "\n";
+		}
+
+		if (Input.GetAxisRaw ("Jump") != 0) {
+			nameText.color = Color.white;
+			amountText.color = Color.white;
+			titleText.color = Color.white;
+		} else {
+			nameText.color = Color.clear;
+			amountText.color = Color.clear;
+			titleText.color = Color.clear;
 		}
 		
 	}
@@ -43,5 +55,14 @@ public class LevelController : MonoBehaviour {
 		}
 
 
+	}
+
+	public bool PerfectToppings(){
+		for(int i = 0; i<toppingCounts.Count; i++){
+			if (toppingCounts [i] != toppingsNeeded [i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
